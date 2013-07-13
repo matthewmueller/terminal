@@ -37,7 +37,7 @@ function Terminal(opts) {
   this.charsets = [null];
 
   // misc
-  this.element;
+  this.el;
   this.children;
   this.refreshStart;
   this.refreshEnd;
