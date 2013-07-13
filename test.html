@@ -1,6 +1,7 @@
 <html>
 <head>
   <title>term component</title>
+  <link rel="stylesheet" href="../build/build.css">
   <style>
     * {
       box-sizing: border-box;
@@ -10,23 +11,16 @@
       margin: 0;
     }
 
-    .terminal {
-      height: 100%;
-      padding: 10px;
-      overflow-y: auto;
-      font: 14px "Monaco", monospace;
-    }
-
   </style>
 </head>
 <body>
   <div class="term"></div>
   <script src="../build/build.js" type="text/javascript"></script>
   <script type="text/javascript">
-    var term = require('terminal')();
+    var Terminal = require('terminal');
+    var terminal = Terminal();
     var el = document.querySelector('.term');
-    term.open();
-    document.body.appendChild(term.el);
+    document.body.appendChild(terminal.el);
 
     [ '\u001b[92m\'use strict\'\u001b[39m\u001b[90m;\u001b[39m',
       '\u001b[90m/*jshint browser:true */\u001b[39m',
@@ -56,14 +50,12 @@
       '  \u001b[31mreturn\u001b[39m \u001b[37mhypernal\u001b[39m\u001b[90m;\u001b[39m',
       '\u001b[33m}\u001b[39m\u001b[90m;\u001b[39m',
       ''
-    ].forEach(function (line) { term.writeln(line); });
+    ].forEach(function (line) { terminal.writeln(line); });
 
 
-    setTimeout(function() {
-      term.writeln('alert(\'hi\');');
-      term.writeln('alert(\'hi\');');
-      term.writeln('alert(\'hi\');');
-    }, 5000);
+    setInterval(function() {
+      terminal.writeln('alert(\'hi\');');
+    }, 1000);
   </script>
 </body>
 </html>

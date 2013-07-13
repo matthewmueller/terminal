@@ -1,0 +1,6 @@
+.terminal {
+  height: 100%;
+  padding: 10px;
+  overflow-y: auto;
+  font: 14px "Monaco", monospace;
+}

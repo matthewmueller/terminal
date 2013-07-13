@@ -9,7 +9,7 @@ function Terminal(opts) {
   if (!(this instanceof Terminal)) return new Terminal(opts);
 
   this.cols = opts.cols || 500;
-  this.rows = opts.rows || 100;
+  this.rows = opts.rows || 10;
 
   this.ybase = 0;
   this.ydisp = 0;
@@ -65,6 +65,9 @@ function Terminal(opts) {
 
   this.tabs;
   this.setupStops();
+
+  // open immediately
+  this.open();
 }
 
 require('./lib/colors')(Terminal);

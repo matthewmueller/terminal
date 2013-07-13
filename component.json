@@ -2,9 +2,10 @@
   "name": "terminal",
   "repository": "matthewmueller/terminal",
   "version": "0.2.7",
-  "main": "term.js",
+  "main": "terminal.js",
+  "styles": [ "terminal.css" ],
   "scripts": [
-    "term.js",
+    "terminal.js",
     "lib/states.js",
     "lib/colors.js",
     "lib/options.js",

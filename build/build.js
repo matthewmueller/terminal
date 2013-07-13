@@ -199,7 +199,7 @@ require.relative = function(parent) {
 
   return localRequire;
 };
-require.register("terminal/term.js", function(exports, require, module){
+require.register("terminal/terminal.js", function(exports, require, module){
 'use strict';
 
 var states = require('./lib/states');
@@ -211,7 +211,7 @@ function Terminal(opts) {
   if (!(this instanceof Terminal)) return new Terminal(opts);
 
   this.cols = opts.cols || 500;
-  this.rows = opts.rows || 100;
+  this.rows = opts.rows || 10;
 
   this.ybase = 0;
   this.ydisp = 0;
@@ -267,6 +267,9 @@ function Terminal(opts) {
 
   this.tabs;
   this.setupStops();
+
+  // open immediately
+  this.open();
 }
 
 require('./lib/colors')(Terminal);
@@ -476,7 +479,7 @@ module.exports = function (Terminal) {
   Terminal.prototype.refresh = function(start, end) {
     var x, y, i, line, out, ch, width, data, attr, fgColor, bgColor, flags, row, parent;
 
-    
+
     width = this.cols;
     y = start;
 
@@ -1595,7 +1598,7 @@ function addRowsOnDemand () {
   while (this.y >= this.rows) {
     this.lines.push(this.blankLine());
     var div = document.createElement('div');
-    this.element.appendChild(div);
+    this.el.appendChild(div);
     this.children.push(div);
 
     this.rows++;
@@ -2284,5 +2287,5 @@ Terminal.charsets = {};
 };
 
 });
-require.alias("terminal/term.js", "terminal/index.js");
+require.alias("terminal/terminal.js", "terminal/index.js");
 
