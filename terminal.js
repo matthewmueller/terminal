@@ -22,6 +22,7 @@ function Terminal(opts) {
   this.queue = '';
   this.scrollTop = 0;
   this.scrollBottom = this.rows - 1;
+  this._tail = false;
 
   // modes
   this.applicationKeypad = false;
@@ -69,6 +70,18 @@ function Terminal(opts) {
   // open immediately
   this.open();
 }
+
+/**
+ * Support tail
+ *
+ * @param {Boolean} tail
+ * @return {Terminal}
+ */
+
+Terminal.prototype.tail = function(tail) {
+  this._tail = (undefined == tail) ? true : tail;
+  return this;
+};
 
 require('./lib/colors')(Terminal);
 require('./lib/options')(Terminal);
